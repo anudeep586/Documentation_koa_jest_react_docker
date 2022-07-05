@@ -1,0 +1,297 @@
+npm init
+npm i koa koa-router
+
+npm i typescript ts-node nodemon @types/koa @types/koa-router --save-dev
+
+
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch-server":"nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/server.ts"
+  },--package.json
+
+          
+
+npm i koa-logger
+
+npm i --save-dev @types/koa-logger
+
+npm i koa-bodyparser
+npm i --save-dev @types/koa-bodyparser
+
+tsconfig file
+
+
+npm i --save-dev @types/jest
+
+
+npm i --save-dev @types/supertest
+
+npm install --save-dev jest ts-jest typescript --legacy-peer-deps
+
+
+
+
+import * as Koa from 'koa';
+import * as Router from 'koa-router'
+import logger=require('koa-logger');
+import bodyparser=require('koa-bodyparser')
+
+const port=process.env.PORT || 8080
+
+const app=new Koa();
+const router=new Router();
+app.use(logger());
+app.use(bodyparser());
+
+router.get('/',async (ctx)=>{
+    ctx.body='Welcome to Koa';
+});
+
+app.use(router.routes());
+app.listen(port);
+
+console.log(` My koa server is up and listening on port ${port}`)
+
+
+{
+    "compilerOptions": {
+        "module":"CommonJS",
+        "target": "es2017",
+        "noImplicitAny": true,
+        "outDir": "./dist",
+        "sourceMap": true
+    },
+    "include": [
+        "./src/**/*"
+    ],
+    
+}
+
+
+
+
+
+{
+  "name": "assignment_day12",
+  "jest": {
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ]
+  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jecho \"Error: no test specified\" && exit 1",
+    "watch-server": "nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/server.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^10.1.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/koa": "^2.13.4",
+    "@types/koa-bodyparser": "^4.3.7",
+    "@types/koa-logger": "^3.1.2",
+    "@types/koa-router": "^7.4.4",
+    "@types/node": "^17.0.24",
+    "@types/supertest": "^2.0.12",
+    "@types/uuid": "^8.3.4",
+    "jest": "^28.0.3",
+    "nodemon": "^2.0.15",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
+  }
+}
+
+docker commands
+sudo apt install docker.io
+
+touch Dockerfile
+
+touch .dockerignore
+
+//no need sudo docker images
+
+sudo docker build -t anudeep/todoapp:1.0 .
+
+sudo docker build -t anudeep/todoapp:1.0 .
+
+sudo docker run fecb0cddbf99(container)
+
+sudo docker run -p  8000:5000  6def8d69c8a0
+                    [local local host]:[container]
+
+sudo docker images -a
+
+
+
+ docker-compose up -d --build && docker-compose logs -f
+ 
+ sudo lsof -i :5432 for checking whats runing
+ 
+ run like this after creating newly image ten it upgrade cntainer
+     sudo chmod 666 /var/run/docker.sock
+     sudo service docker start && docker-compose up -d
+     
+   sudo docker run --name postgres-docker -e POSTGRES_PASSWORD=1 -d -p  4321:5432 postgres
+416ee506a072070ae1c7c8f9ad69849d7f6f766ac013296745c749946a0c3739
+
+
+docker exec -it id /bin/sh
+psql -U postgres koa
+
+docker exec CONTAINER_NAME sh -c "npm run migrate"
+
+
+FROM node:12
+
+
+WORKDIR /src
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+ENV PORT=5000
+
+EXPOSE 5000
+
+CMD ["npm","run","watch-server"]
+
+
+
+
+postgres:-
+
+sudo -i -u postgres
+
+
+psql
+
+\l
+
+lc koa(database name)
+
+\dt
+
+CREATE TABLE account(id serial PRIMARY KEY, username VARCHAR (50 ) NOT NULL,password VARCHAR ( 50 ) NOT NULL,email VARCHAR ( 255 ) UNIQUE NOT NULL,created_on TIMESTAMP NOT NULL,last_login TIMESTAMP);
+
+
+
+
+
+
+
+
+
+not working:-"jest": {
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "tsconfig.json"
+      }
+    },
+    "moduleFileExtensions": ["ts","js"],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "./node_modules/ts-jest"
+    },
+    "testMatch": [
+      "**/__tests__/**/*.test.(ts|js)"
+    ],
+    "testEnvironment": "node"
+  }
+  
+  
+  
+  
+  
+  npm run knex migrate:make create-reviews-table
+  
+  npm run knex migrate:latest
+  
+  npm run knex seed:run
+  
+  npm run knex seed:make initial
+  
+  npm i yarn 
+  yarn buid
+  
+  
+  raramuri@Raramuri:~/zode/zode/examples/sample-api$ yarn dev
+  aramuri@Raramuri:~/zode/zode$ yarn link
+  raramuri@Raramuri:~/zode/zode$ yarn unlink
+  raramuri@Raramuri:~/zode/zode/packages/zode$ yarn link
+  
+  
+  
+  yarn init -y
+  yarn add --dev ts-node
+    yarn link @zode/zode
+  
+  {
+  "name": "sample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node src/index.ts"
+  }
+}
+
+//const zip = new AdmZip()
+
+    // const outputFile = "file.zip";
+    // zip.addLocalFolder("/home/raramuri/Desktop/filestream_koa/filezip");
+    let time2 = new Date()
+    //zip.writeZip(outputFile);
+    
+    
+    
+    
+    
+    
+    
+   good package.json 
+    
+    
+{
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "knex": "./node_modules/.bin/knex --knexfile src/database/database.connection.ts",
+        "watch-server": "nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/server.ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "koa": "^2.13.4",
+        "koa-bodyparser": "^4.3.0",
+        "knex": "^2.1.0",
+        "koa-logger": "^3.2.1",
+        "koa-router": "^10.1.1"
+    },
+    "devDependencies": {
+        "@types/koa": "^2.13.4",
+        "@types/koa-bodyparser": "^4.3.7",
+        "@types/koa-logger": "^3.1.2",
+        "@types/koa-router": "^7.4.4",
+        "nodemon": "^2.0.18",
+        "ts-node": "^10.8.1",
+        "typescript": "^4.7.4"
+    }
+}
