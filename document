@@ -326,5 +326,27 @@ app.listen(port);
 console.log(` My koa server is up and listening on port ${port}`)
 
 
+ psql -U alakanav -d postgres 
+
+psql (15.4 (Homebrew))
+Type "help" for help.
+
+postgres=# \l
+                                            List of databases
+   Name    |  Owner   | Encoding | Collate | Ctype | ICU Locale | Locale Provider |   Access privileges   
+-----------+----------+----------+---------+-------+------------+-----------------+-----------------------
+ optibase  | alakanav | UTF8     | C       | C     |            | libc            | 
+ postgres  | alakanav | UTF8     | C       | C     |            | libc            | 
+ template0 | alakanav | UTF8     | C       | C     |            | libc            | =c/alakanav          +
+           |          |          |         |       |            |                 | alakanav=CTc/alakanav
+ template1 | alakanav | UTF8     | C       | C     |            | libc            | =c/alakanav          +
+           |          |          |         |       |            |                 | alakanav=CTc/alakanav
+(4 rows)
+
+postgres=# drop optibase;
+ERROR:  syntax error at or near "optibase"
+LINE 1: drop optibase;
+             ^
+postgres=# 
 
 
