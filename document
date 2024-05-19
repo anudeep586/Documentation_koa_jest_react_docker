@@ -5,8 +5,17 @@ npm i typescript ts-node nodemon @types/koa @types/koa-router --save-dev
 
 
 "scripts": {
+    "lint": "eslint '**/*.ts'",
+    "lint:fix": "eslint '**/*.ts' --fix",
+    "format": "prettier --write '**/*.ts'",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch-server":"nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/server.ts"
+    "code": "nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/server.ts",
+    "build": "tsc -b tsconfig.json",
+    "prod": "node dist/server.js",
+    "start": "node .",
+    "dev": "nodemon ./src/server.ts",
+    "knex": "./node_modules/.bin/knex --knexfile src/database/database.connection.ts",
+    "watch-server": "nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/server.ts"
   },--package.json
 
           
