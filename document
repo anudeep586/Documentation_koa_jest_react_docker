@@ -419,3 +419,22 @@ const db = knex(config);
 export default db;
 
 
+return knex.schema.createTable('user_org_map', (table: Knex.TableBuilder) => {
+    table.uuid('id').primary().notNullable().unique();
+    table
+      .uuid('userId')
+      .references('id')
+      .inTable('users')
+      .onUpdate('CASCADE') // If Article PK is changed, update FK as well.
+      .onDelete('CASCADE');
+    table
+      .uuid('organizationId')
+      .references('id')
+      .inTable('organizations')
+      .onUpdate('CASCADE') // If Article PK is changed, update FK as well.
+      .onDelete('CASCADE');
+    table.string('role').nullable();
+    table.timestamp('created_at', { useTz: true }).defaultTo(knex.fn.now());
+    table.timestamp('updated_at', { useTz: true }).defaultTo(knex.fn.now());
+  });
+
