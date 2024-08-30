@@ -438,3 +438,17 @@ return knex.schema.createTable('user_org_map', (table: Knex.TableBuilder) => {
     table.timestamp('updated_at', { useTz: true }).defaultTo(knex.fn.now());
   });
 
+def dijktras():
+    pq=[0,source] #starting with source
+    heapq.heapify(pq)
+    min_dist=[math.inf]*n
+    min_dist[source]=0
+
+    while pq:
+        weight,node=heapq.heappop(pq) # poping the neighbours
+        for neighbour,Nweight in dic[node]: #checking the weights of neightbours to that part
+            if weight+Nweight<min_dist[neighbour]: 
+                min_dist[neighbour]=weight+Nweight
+                heapq.heappush(pq,(min_dist[neighbour],neighbour))
+    return min_dist[destination]
+
